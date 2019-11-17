@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jamochatech.dao.CompanyMapper">
+	<resultMap type="company" id="result">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="businessType" column="businessType" />
+		<result property="empSize" column="empSize" />
+		<result property="comType" column="comType" />
+		<result property="contactNumber" column="contactNumber" />
+		<result property="emailAddress" column="emailAddress" />
+		<result property="country" column="country" />
+		<result property="city" column="city" />
+		<result property="address" column="address" />
+		<result property="dateOfJoining" column="dateOfJoining" />
+		<result property="dateOfResigning" column="dateOfResigning" />
+		<result property="empCount" column="empCount" />
+		<result property="month" column="month" />
+		<result property="res" column="res" />
+		<result property="serviceslist" column="serviceslist" />
+		
+		<collection property="services" javaType="list" ofType="ServicingIndustry" resultMap="skil" columnPrefix="serv_" />
+	</resultMap>
+	<resultMap id="skil" type="ServicingIndustry">
+		<result column="name" property="servicesIndustry" />
+	</resultMap>
+	<select id="getAllCompanyDetails" resultType="company" resultMap="result">
+		SELECT c.id,c.name,c.businessType,c.empSize,c.comType,c.emailAddress,c.country,c.city,c.dateOfJoining,c.dateOfResigning,s.servicingIndustry as serv_name from CompanyMaster5 c RIGHT OUTER JOIN ServicingIndustry1 s on c.id=s.id;
+	</select>
+	<select id="getAllCompanyDetails1" resultType="company" resultMap="result">
+		SELECT city,sum(empSize) as empSize from CompanyMaster5 group by city;
+	</select>
+	<select id="getAllDetails" resultType="company" resultMap="result">
+		SELECT id,name,businessType,empSize,comType,emailAddress,country,city from CompanyMaster5 ;
+	</select>
+	<select id="getAllBarDetails" resultType="company" resultMap="result">
+		SELECT businessType,sum(empSize) as empSize from CompanyMaster5 group by businessType;
+	</select>
+	<select id="multiBarDetails" resultType="company" resultMap="result">
+		SELECT sum(c.empSize) as empSize,s.servicingIndustry as serv_name from CompanyMaster5 c RIGHT OUTER JOIN ServicingIndustry1 s on c.id=s.id group by servicingIndustry;
+	</select>
+	<insert id="insertCompany" parameterType="company" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO CompanyMaster5(name,businessType,empSize,comType,emailAddress,country,city,address,dateOfJoining,dateOfResigning)VALUES(#{name},#{businessType}, #{empSize}, #{comType},#{emailAddress},#{country},#{city},#{address},#{dateOfJoining},#{dateOfResigning})
+	</insert>
+	<update id="updateCompany" parameterType="company">
+		UPDATE CompanyMaster5 SET name = #{name}, businessType = #{businessType}, empSize =#{empSize}, comType = #{comType},contactNumber=#{contactNumber}, emailAddress=#{emailAddress},country =#{country},city = #{city},address =#{address} WHERE id =#{id}
+	</update>
+	<delete id="deleteCompany" parameterType="int">
+		DELETE FROM CompanyMaster5 WHERE id = #{id}
+	</delete>
+	<select id="findById" parameterType="int" resultType="company" resultMap="result">
+		SELECT c.id,c.name,c.businessType,c.empSize,c.comType,c.emailAddress,c.contactNumber,c.address,c.country,c.city,c.dateOfJoining,c.dateOfResigning,s.servicingIndustry as serv_name from CompanyMaster5 c RIGHT OUTER JOIN ServicingIndustry1 s on c.id=s.id where c.id=#{id};
+	</select>
+	<select id="findById1" parameterType="int" resultType="company" resultMap="result">
+		SELECT c.id,c.name,c.businessType,c.empSize,c.comType,c.emailAddress,c.contactNumber,c.address,c.country,c.city,c.dateOfJoining,c.dateOfResigning,s.servicingIndustry as serv_name from CompanyMaster5 c RIGHT OUTER JOIN ServicingIndustry1 s on c.id=s.id where c.id=#{id};
+	</select>
+	<select id="validId" parameterType="int" resultType="company" resultMap="result">
+		SELECT id,name from CompanyMaster5 where id=#{id};
+	</select>
+	<select id="getById" parameterType="int" resultType="company" resultMap="result">
+		SELECT c.id,c.name,c.businessType,c.empSize,c.comType,c.emailAddress,c.country,c.city,s.servicingIndustry as serv_name from CompanyMaster5 c RIGHT OUTER JOIN ServicingIndustry1 s on c.id=s.id where c.id=#{id};
+	</select>
+	<select id="calendarview" resultType="company" resultMap="result">
+       SELECT dateOfJoining,dateOfResigning,empCount,res from CompanyMaster5;
+	</select>
+	<select id="exportDetails" resultType="company" resultMap="result">
+		SELECT id,name,businessType,empSize,comType,emailAddress,country,city,dateOfJoining,dateOfResigning from CompanyMaster5;
+	</select>
+	<select id="getAllColumn" resultType="company" resultMap="result" parameterType="company">
+		SELECT id,name,businessType,empSize,comType,emailAddress,country,city,dateOfJoining,dateOfResigning from CompanyMaster5 where businessType=#{businessType};
+	</select>
+	
+	<select id="card1" resultType="company" resultMap="result">
+		SELECT count(name) as empSize from CompanyMaster5;
+	</select>
+	<select id="card2" resultType="company" resultMap="result">
+		SELECT sum(empSize) as empSize from CompanyMaster5;
+	</select>
+	<select id="card3" resultType="company" resultMap="result">
+		SELECT count(distinct country) as empSize from CompanyMaster5;
+	</select>
+	<select id="card4" resultType="company" resultMap="result">
+		SELECT count(distinct city) as empSize from CompanyMaster5;
+	</select>
+</mapper>

@@ -1,0 +1,42 @@
+.h3, h3 {
+    font-size: 19.5px;
+}
+a {
+    color: white;
+    text-decoration: none;
+    cursor:pointer;
+}
+.canvasjs-chart-credit
+{
+display: none;
+}
+#chartContainer1
+{
+margin: 40px;	
+}
+#chartContainer3
+{
+margin: 40px;	
+
+
+}
+#chartContainer2
+{
+margin: 40px;	
+
+
+}
+#chartContainer
+{
+margin: 40px;
+}
+#calendar
+{
+	border:1px solid #a29e9e;
+	margin: 30px;
+}
+#calendar1
+{
+	border:1px solid #a29e9e;
+	margin: 30px;
+}

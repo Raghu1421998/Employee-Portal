@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jamochatech.dao.ServicingIndustryMapper">
+	<resultMap type="ServicingIndustry" id="result">
+		<id property="sid" column="sid" />
+		<result property="servicesIndustry" column="servicingIndustry" />
+		<result property="id" column="id" />
+	</resultMap>
+	<insert id="insertServices" parameterType="ServicingIndustry" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO ServicingIndustry1(servicingIndustry,id)VALUES(#{servicesIndustry},#{id})
+	</insert>
+	<delete id="deleteCompany1" parameterType="int">
+		DELETE from ServicingIndustry1 where id=#{id}
+	</delete>
+	<select id="getById1" parameterType="int" resultType="ServicingIndustry" resultMap="result">
+		Select servicingIndustry from ServicingIndustry1 where id=#{id};
+	</select>
+</mapper>
