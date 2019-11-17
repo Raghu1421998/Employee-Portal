@@ -1,0 +1,90 @@
+td{
+    text-align: center;
+}
+th{
+    text-align: center;
+}
+.invalid-feedback
+{
+    color: red;
+}
+.container
+{
+        border: 1px solid black;
+        padding: 10px;
+        margin-top: 159px;
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.form-horizontal .form-group {
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-bottom: 35px;
+}
+form
+{
+    margin-top: 27px;
+    margin-left: -53px;}
+#c
+{
+    margin-left: 54px;
+
+    padding: 7px 20px;
+    background-color: #2076c1;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0px;
+}
+#s
+{
+    margin-left: 282px;
+
+    padding: 7px 20px;
+    background-color: #9a9797;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0px;
+}
+#imp
+{
+    margin-top: 76px;
+}
+label.check
+{
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 100;
+}
+label
+{
+    font-weight: 200;
+}
+
+.c-label:after {
+	color: #d00;
+	content: " *";
+	position: absolute;
+	margin-left: 5px;
+}
+
+
+
+#back {
+    float: right;
+    margin-right: 163px;
+    margin-top: -27px;
+    padding: 7px 25px;
+    background-color: #2076c1;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;}
+.errordiv
+{
+    color:red;
+}

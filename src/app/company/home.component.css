@@ -1,0 +1,58 @@
+.invalid-feedback
+{
+    color: red;
+}
+.errordiv
+{
+    color: red;   
+}
+.form-control {
+    margin-right: 10cm;
+    margin-right: 1;
+    display: block;
+    width: 31%;
+    height: 34px;
+    padding: 6px 12px;
+ 
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    align-content: center;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
+.form-group {
+    margin-bottom: 15px;
+    MARGIN-LEFT: 15.5CM;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    border-radius: 0px;
+    background-image: none;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    border-radius: 0px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    MARGIN-LEFT: 2.4CM;
+}

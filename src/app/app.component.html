@@ -1,0 +1,43 @@
+<!-- <div style="padding:5px">
+  <ul class="nav nav-tabs">
+      <li routerLinkActive="active">
+          <a routerLink="home">Home</a>
+      </li>
+      <li routerLinkActive="active">
+          <a routerLink="edit/0">Add Company</a>
+      </li>
+      <li routerLinkActive="active">
+          <a routerLink="summary">List of Companies</a>
+      </li>
+  </ul>
+  <br/>
+  <router-outlet></router-outlet>
+</div>
+
+ -->
+ 
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid" id="myDIV">
+    <div class="navbar-header">
+      <a class="navbar-brand" style="color:white;">Company Portal</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+        <li routerLinkActive="active">
+            <a routerLink="home">HOME</a>
+        </li>
+       
+        <li routerLinkActive="active">
+            <a routerLink="summary">COMPANY</a>
+        </li>
+    </ul>
+
+  </div>
+  <router-outlet></router-outlet>
+
+</nav>
+
+</body>
+</html>

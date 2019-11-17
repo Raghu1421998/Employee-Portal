@@ -1,0 +1,165 @@
+<button id="back" (click)="goBack()">BACK</button>
+<div class="container">
+<div (bookObj) = 'random($event)'>
+<form class="form-horizontal"   #f="ngForm" (ngSubmit)="onSubmit(f,f.value)" (reset)="onReset(f,f.value)"  novalidate >
+<input type = "hidden"  name = "id"  /> 
+<div class="form-group">
+<label class="control-label c-label col-sm-2">Company Name</label>
+<div class="col-sm-10">
+<input type = "text" placeholder="Enter Company Name" name = "name" class="form-control" [(ngModel)]="company.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" minlength="5" maxlength="50" required />
+<div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+<div *ngIf="name.errors.required">Company Name is required</div>
+<div *ngIf="name.errors.minlength">Company Name should be above 5 letters</div>
+<div *ngIf="name.errors.maxlength">Company Name should be below 50 letters</div>
+
+</div>
+</div>  
+
+</div>
+
+<div class="form-group" >
+<label class="control-label c-label col-sm-2">Business Type</label>
+<div class="col-sm-10">
+<select name="businessType"   class="form-control" [(ngModel)]="company.businessType" #businessType="ngModel" [ngClass]="{ 'is-invalid': f.submitted && businessType.invalid }"  required>
+<option [ngValue]="null" disabled selected>Select BusinessType</option>  
+<option value="IT Software">IT Software</option>
+<option value="IT Hardware">IT Hardware</option>
+<option value="BPO">BPO</option>
+<option value="Agriculture">Agriculture</option>
+<option value="Banking">Banking</option>
+<option value="Financial Services">Financial Services</option>
+
+
+</select>    
+<div *ngIf="f.submitted && businessType.invalid" class="invalid-feedback">
+<div *ngIf="businessType.errors.required">Business Type is required</div>
+
+</div>                   
+</div>
+</div>
+<div class="form-group">
+<label class="control-label c-label col-sm-2">Employee Size</label>
+<div class="col-sm-10">
+<input type = "text" placeholder="Enter Employee Size" name="empSize"   class="form-control"  [(ngModel)]="company.empSize" #empSize="ngModel" [ngClass]="{ 'is-invalid': f.submitted && empSize.invalid }" minlength="1" maxlength="4" pattern="^[0-9]*$"  required />
+<div *ngIf="f.submitted && empSize.invalid" class="invalid-feedback">
+<div *ngIf="empSize.errors.required">Employee Size is required</div>
+<div *ngIf="empSize.errors.pattern">Enter valid Employee Size</div>
+</div>
+</div>    
+</div>
+<div class="form-group" [ngClass]="{ 'is-invalid': f.submitted && comType.invalid }" >
+<label class="control-label c-label col-sm-2">Company Type</label>
+<div class="col-sm-10">
+<label class="radio-inline">
+<input type="radio" value="Employeer"  name="comType" [(ngModel)] = "company.comType" #comType="ngModel"   required>
+Employeer
+</label>
+<label class="radio-inline">
+<input type="radio" value="Consultant"  name="comType" [(ngModel)] = "company.comType"  #comType="ngModel"   required>
+Consultant
+</label>
+<div *ngIf="f.submitted && comType.invalid" class="invalid-feedback">
+<div *ngIf="comType.errors.required">Company Type is required</div>
+</div>
+</div>    
+</div>
+<div class="form-group">
+<label class="control-label col-sm-2">Contact Number</label>
+<div class="col-sm-10">
+<input type = "text" placeholder="Enter Contact Number"  name = "contactNumber" class="form-control" [(ngModel)] = "company.contactNumber" #contactNumber="ngModel" [ngClass]="{ 'is-invalid': f.submitted && contactNumber.invalid }"  pattern="^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$"  />
+<div *ngIf="f.submitted && contactNumber.invalid" class="invalid-feedback">
+<div *ngIf="contactNumber.errors.pattern">Enter valid Contact Number</div>
+</div>
+</div>    
+</div>
+<div class="form-group">
+<label class="control-label col-sm-2 c-label">Email Address</label>
+<div class="col-sm-10">
+<input type = "text" placeholder="Enter Email Address" name = "emailAddress" class="form-control" [(ngModel)] = "company.emailAddress" #emailAddress="ngModel" [ngClass]="{ 'is-invalid': f.submitted && emailAddress.invalid }" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" required />
+<div *ngIf="f.submitted && emailAddress.invalid" class="invalid-feedback">
+<div *ngIf="emailAddress.errors.required">Email Address is required</div>
+<div *ngIf="emailAddress.errors.pattern">Enter valid Email Address</div>
+</div>
+</div>    
+</div>
+   <div class="form-group">
+      <label class="control-label col-sm-2 c-label">State</label>
+      <div class="col-sm-10">
+      <select class="form-control"  id="country" (change)="changeCountry($event.target.value)" [(ngModel)] = "company.country" name="country" #country="ngModel" [ngClass]="{ 'is-invalid': f.submitted && country.invalid }"   required>
+        <option [ngValue]="null" disabled selected>Select Country</option>  
+        <option *ngFor ="let count of countryList">{{count.name}} </option>
+  </select>
+  <div *ngIf="f.submitted && country.invalid" class="invalid-feedback">
+      <div *ngIf="country.errors.required">Country is required</div>
+</div>
+</div>
+</div>
+<div class="form-group">
+    <label class="control-label col-sm-2 c-label">City</label>
+    <div class="col-sm-10">
+  <select class="form-control"  id="city" [(ngModel)] = "company.city" name="city" #city="ngModel" [ngClass]="{ 'is-invalid': f.submitted && city.invalid }"   required>
+    <option [ngValue]="null" disabled selected>Select City</option>  
+    <option *ngFor ="let city of cities">{{city}}</option>
+  </select>
+  <div *ngIf="f.submitted && city.invalid" class="invalid-feedback">
+      <div *ngIf="city.errors.required">City is required</div>
+</div>
+</div>
+</div>
+<div class="form-group">
+<label class="control-label col-sm-2">Address</label>
+<div class="col-sm-10">
+<textarea rows="5" cols="30" placeholder="Enter Address" name = "address" class="form-control" [(ngModel)]="company.address" #address="ngModel" [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" maxlength="255"></textarea>
+<div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
+        <div *ngIf="address.errors.maxlength">Address is required</div>
+        </div>  
+</div>  
+</div>
+<div class="form-group">
+<label class="control-label col-sm-2 c-label">Date of Join</label>
+<div class="col-sm-10">
+<input type = "text" placeholder="Enter Date Of Joining(MM/DD/YYYY)" name="dateOfJoining"   class="form-control"  [(ngModel)]="company.dateOfJoining" #dateOfJoining="ngModel" [ngClass]="{ 'is-invalid': f.submitted && dateOfJoining.invalid }"  pattern="^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$"  required />
+<div *ngIf="f.submitted && dateOfJoining.invalid" class="invalid-feedback">
+<div *ngIf="dateOfJoining.errors.required">DateOfJoining is required</div>
+<div *ngIf="dateOfJoining.errors.pattern">Enter valid dateOfJoining </div>
+</div>
+</div>   
+</div>
+
+<div class="form-group">
+<label class="control-label col-sm-2 c-label">Date of Resign</label>
+<div class="col-sm-10">
+<input type = "text" name="dateOfResigning" placeholder="Enter Date Of Resigning(MM/DD/YYYY)"   class="form-control"  [(ngModel)]="company.dateOfResigning" #dateOfResigning="ngModel" [ngClass]="{ 'is-invalid': f.submitted && dateOfResigning.invalid }"  pattern="^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$"  required />
+<div *ngIf="f.submitted && dateOfResigning.invalid" class="invalid-feedback">
+<div *ngIf="dateOfResigning.errors.required">DateOfResigning is required</div>
+<div *ngIf="dateOfResigning.errors.pattern">Enter valid DateOfResigning </div>
+</div>
+</div>   
+</div>
+
+        
+        <div class="form-group">
+            <label for="services"  class="control-label c-label col-sm-2">Servicing Industry</label><br>
+            <div class="col-sm-10">
+            <label class="checkbox-inline " *ngFor ="let service of servicesList">
+            <input type="checkbox" id="{{service}}" name="{{service}}"  (change)="getServicesValues($event, service)" [ngModel]="isSelected(service)"  />
+               {{ service }}           
+            </label>  
+            <div class="errordiv" *ngIf="duplicateServiceShow">{{duplicateServiceMessage}}</div>
+          </div> 
+          
+        </div>
+
+<div id ="imp" class="form-group">
+<div class="col-sm-offset-2 col-sm-10">
+<button type="reset" id="s" class = "btn btn-primary">CLEAR</button>
+<button type="submit" id="c" class = "btn btn-primary">SUBMIT</button>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+</div>

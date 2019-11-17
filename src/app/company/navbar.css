@@ -1,0 +1,21 @@
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color:#70a6d6;
+    color:white; 
+}
+.navbar-default .btn-link {
+    color: white;
+    margin-top: 8px;
+}
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+li.active
+{
+	  background-color: #666;
+	
+}

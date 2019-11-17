@@ -1,0 +1,26 @@
+
+@import url("alternative.css");
+@import url("displaytag.css");
+@import url("maven-base.css");
+@import url("print.css");
+@import url("screen.css");
+@import url("site.css");
+@import url("teststyles.css");
+td{
+    text-align: center;
+}
+th{
+    text-align: center;
+}
+.btn[_ngcontent-uag-c1] {
+    margin-left: 0cm;
+}
+#search
+{
+    width:20%;
+}
+th {
+    background-color: #70a6d6;
+    color: black;
+    cursor: pointer;
+}
